@@ -1,5 +1,4 @@
 import unittest
-import string
 from passlock import User #!this isa an import of a class
 from passlock import Credentials #!
 
@@ -51,26 +50,26 @@ class TestUser(unittest.TestCase):
 
             self.new_user.delete_user()#! Deleting a user object
             self.assertEqual(len(User.user_list),1)  
-class Credentials(): 
+class TestCredentials(unittest.TestCase):
 
     def setUp(self):
         """
         Setup to run before  test case
         """
-        self.new_credentials = Credentials("twiter","Joseph","Oderoh","5jko2k1")
-    def __init__(self):
+        self.new_credentials = Credentials("twitter","JK-~black","5jko2k1")
+    def test_init(self):
         """
         test the creds are properly initialized
         """
-        self.assertEqual(self.new_user.account,"twitter")
-        self.assertEqual(self.new_user.last_name,"Joseph")
-        self.assertEqual(self.new_user.last_name,"Oderoh")
-        self.assertEqual(self.new_user.password,"5jko2k1")
-    def save_credentials(self)
+        self.assertEqual(self.new_credentials.account,"twitter")
+        self.assertEqual(self.new_credentials.username,"JK-~black")
+        self.assertEqual(self.new_credentials.password,"5jko2k1")
+    def test_save_credentials(self):
         """
         test to save credential into the credential list
         """
         self.new_credentials.save_credentials()
+        self.assertEqual(len(Credentials.credentials_list),1)
 
 if __name__ == '__main__':
     unittest.main()    

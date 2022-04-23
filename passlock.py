@@ -27,9 +27,13 @@ class User:
         User.user_list.remove(self)
 class Credentials:
     credentials_list = []
-    def __init__(self,account,first_name,last_name,password):
+    def __init__(self,account,username,password):
        
         self.account = account
-        self.first_name = first_name
-        self.last_name = last_name
+        self.username = username
         self.password = password
+    def save_credentials(self):
+        """
+        test to save credentials in the credentials list
+        """   
+        Credentials.credentials_list.append(self) 
