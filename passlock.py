@@ -18,6 +18,13 @@ class User:
         '''
 
         User.user_list.append(self)    
+    def delete_user(self):
+
+        '''
+        delete_user method deletes a saved user from the user_list
+        '''
+
+        User.user_list.remove(self)
 class Credentials:
     credentials_list = []
     def __init__(self,account,first_name,last_name,password):

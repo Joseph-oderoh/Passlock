@@ -1,6 +1,7 @@
 import unittest
 import string
 from passlock import User #!this isa an import of a class
+from passlock import Credentials #!
 
 class TestUser(unittest.TestCase):
 
@@ -42,14 +43,35 @@ class TestUser(unittest.TestCase):
         self.assertEqual(len(User.user_list),2)
     def test_delete_user(self):
             '''
-            test_delete_contact to test if we can remove a contact from our contact list
+            test_delete_user to test if we can remove a user from our user list
             '''
-            self.new_contact.save_contact()
-            test_user = User("Test","user","5jko2k1") # new contact
+            self.new_user.save_user()
+            test_user = User("Test","user","5jko2k1") #!new user
             test_user.save_user()
 
-            self.new_contact.delete_contact()# Deleting a contact object
-            self.assertEqual(len(Contact.contact_list),1)    
+            self.new_user.delete_user()#! Deleting a user object
+            self.assertEqual(len(User.user_list),1)  
+class Credentials(): 
+
+    def setUp(self):
+        """
+        Setup to run before  test case
+        """
+        self.new_credentials = Credentials("twiter","Joseph","Oderoh","5jko2k1")
+    def __init__(self):
+        """
+        test the creds are properly initialized
+        """
+        self.assertEqual(self.new_user.account,"twitter")
+        self.assertEqual(self.new_user.last_name,"Joseph")
+        self.assertEqual(self.new_user.last_name,"Oderoh")
+        self.assertEqual(self.new_user.password,"5jko2k1")
+    def save_credentials(self)
+        """
+        test to save credential into the credential list
+        """
+        self.new_credentials.save_credentials()
+
 if __name__ == '__main__':
     unittest.main()    
 
