@@ -49,19 +49,20 @@ class TestUser(unittest.TestCase):
             test_user.save_user()
 
             self.new_user.delete_user()#! Deleting a user object
-            self.assertEqual(len(User.user_list),1)  
+            self.assertEqual(len(User.user_list),1) 
+          
 class TestCredentials(unittest.TestCase):
 
     def setUp(self):
         """
         Setup to run before  test case
         """
-        self.new_credentials = Credentials("twitter","JK-~black","5jko2k1")
+        self.new_credentials = Credentials("Twitter","JK-~black","5jko2k1")
     def test_init(self):
         """
         test the creds are properly initialized
         """
-        self.assertEqual(self.new_credentials.account,"twitter")
+        self.assertEqual(self.new_credentials.account,"Twitter")
         self.assertEqual(self.new_credentials.username,"JK-~black")
         self.assertEqual(self.new_credentials.password,"5jko2k1")
     def test_save_credentials(self):
@@ -84,6 +85,28 @@ class TestCredentials(unittest.TestCase):
         test_credentials = Credentials("test","user","5jko2k1") #!new creds
         test_credentials.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),2)
+    def test_delete_credentials(self):
+        """
+        test_delete_credentials to test if we can remove it
+        """    
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Test","user","5jko2k1")
+        test_credentials.save_credentials()
+
+        self.new_credentials.delete_credentials()#!deleting object
+        self.assertEqual(len(Credentials.credentials_list),1)
+    def test_find_credentialr(self):
+        """
+        test to check if we can find a credential entry by account  credential
+        """
+        self.new_credentials.save_credentials()
+        test_credentials = Credentials("Twitter","mikeycharles","Mfh45hfk") 
+        test_credentials.save_credentials()
+
+        found_credentials = Credentials.find_credentials("Twitter")
+
+        self.assertEqual(found_credentials.account,test_credentials.account)
+    
 
 if __name__ == '__main__':
     unittest.main()    

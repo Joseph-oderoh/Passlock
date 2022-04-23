@@ -1,5 +1,7 @@
 from pyclbr import Class
 
+from requests import delete
+
 
 class User:
     """
@@ -37,3 +39,14 @@ class Credentials:
         test to save credentials in the credentials list
         """   
         Credentials.credentials_list.append(self) 
+    def delete_credentials(self):
+        """
+        delete credentials methode to test
+        """    
+        Credentials.credentials_list.remove(self)
+    @classmethod
+    def find_credentials(cls,account):
+        found_credentials = Credentials.find_credentials
+        """
+        
+        """    
