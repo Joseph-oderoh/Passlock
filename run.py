@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.8
+from enum import auto
 from passlock import User,Credentials
 
 def create_new_user(first_name,last_name,password):
@@ -56,5 +57,50 @@ def find_credentials(account):
     return Credentials.find_credentials(account)               
 def check_credentials(account):
     """
-    function that 
+    function that check if credentials  exists
     """
+    return Credentials.credentials_exist(account)
+def generate_password():
+    """
+    generate a random password for the user
+    """
+    auto_password = Credentials.generate_password()
+    return auto_password
+def copy_password(account):
+    """
+    function to copy password by the use of pyperclip
+    """
+    return Credentials.copy_password(account)
+
+def passlock():
+        print("Hello Welcome to your Passlock App. What is your name?")
+        user_name = input()
+
+        print(f"Hello {user_name}. what would you like to do?")
+        print('\n')
+        print("Please enter one of the following to proceed.\n CA ---  Create New Account  \n LI ---  Have An Account  \n")
+        short_code = input().lower()
+        if short_code == "ca":
+            print("SIGN UP")
+            print('*' * 50)
+            username = input("User_name: ")
+            while True:
+                print("TP - to input own password: \n GP - generate  a random password")      
+                password_choice = input().lower() 
+                if password_choice  == "tp":
+                    password =  input("Password Enter\n")
+                    break
+                elif generate_password == "gp":
+                    password = generate_password()
+                else:
+                    print("Invalid try again\n")  
+                print("Invalid password please try again")
+                save_user(create_new_user(username,password))
+                print("*"*85)
+                print(f"Hello {username},succesfully created an account! Your password is: {password}")
+                print("*"*50)   
+        elif short_code == "li": 
+                print("*" *40)
+                print()   
+if __name__ == '__main__':
+    passlock()                

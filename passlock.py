@@ -1,13 +1,15 @@
+import string
 import pyperclip
+import random
 class User:
+
     """
     This class generates new instance  of user accounts
     """
     user_list = [] # Empty contact list
-    def __init__(self,first_name,last_name,password):
+    def __init__(self,username,password):
         
-        self.first_name = first_name
-        self.last_name = last_name
+        self.username = username
         self.password = password
     def save_user(self):
 
@@ -73,3 +75,10 @@ class Credentials:
     def copy_account(cls,account):
         credentials_found = Credentials.find_credentials (account)
         pyperclip.copy(credentials_found.account)                  
+    def generate_password(stringLength=8):
+        """
+        generate pass words
+        """  
+        password = string.ascii_uppercase +  string.ascii_lowercase + string.digits + "~!@#$%^&*"
+        return "".join(random.choice(password)
+        for i in range(stringLength))
