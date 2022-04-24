@@ -2,11 +2,11 @@
 from enum import auto
 from passlock import User,Credentials
 
-def create_new_user(first_name,last_name,password):
+def create_new_user(username,password):
     """
     function to create with last first  and password
     """
-    new_user = User(first_name,last_name,password)
+    new_user = User(username,password)
     return new_user
 def save_user(user):
     """
@@ -23,11 +23,11 @@ def display_user():
     function to display existing user 
     """
     return User.display_user() 
-def login_user(first_name,last_name,password):
+def login_user(username,password):
     """
     function to check if a user exists
     """
-    check_user  = Credentials.verify_user(first_name,last_name,password)
+    check_user  = Credentials.verify_user(username,password)
     return check_user
 def create_new_credentials(account,userName,password):
     """
@@ -95,12 +95,40 @@ def passlock():
                 else:
                     print("Invalid try again\n")  
                 print("Invalid password please try again")
-                save_user(create_new_user(username,password))
-                print("*"*85)
-                print(f"Hello {username},succesfully created an account! Your password is: {password}")
-                print("*"*50)   
+            save_user(create_new_user(username,password))
+            print("*"*85)
+            print(f"Hello {username},succesfully created an account! Your password is: {password}")
+                
         elif short_code == "li": 
+            print("*" *40)
+            print("Enter your User name and your Password to log in:")
+            username = input("User_name: ")
+            password = input("password: ")
+            login = login_user(username,password)
+            if login_user == login:
+                print("Hello {username} this is Your passlock app")
+                print("\n")
+        while True:
+            print(" user this short codes :\n CC - Create  a new credentials \n DC - Display credentials \n FC- Find credentials \n GP - Generate  random  password \n D- Delete credentials \n EX - Exit app")            
+            short_code = input().lower()
+            if short_code == "cc":
+                print("*" *20)
+                print("New cridentials")
                 print("*" *40)
-                print()   
+                print("Name of your Account")
+                print("Your Username")
+                userName = input()
+                account = input().lower()
+                while True:
+                    print("TP - to input own password: \n GP - generate  a random password") 
+                    password_choice = input().lower() 
+                    if password_choice  == "tp":
+                        password =  input("Password Enter\n")
+                        break
+                    elif generate_password == "gp":
+                        password = generate_password()
+                    else:
+                        print("*"  *50)
+                        print("Invalid try again\n")  
 if __name__ == '__main__':
     passlock()                
