@@ -22,14 +22,20 @@ def display_user():
     function to display existing user 
     """
     return User.display_user() 
-def login_user(first_name,last_name,password) :
+def login_user(first_name,last_name,password):
     """
     function to check if a user exists
     """
     check_user  = Credentials.verify_user(first_name,last_name,password)
     return check_user
-def create_new_credentials(account,usernae,password)
+def create_new_credentials(account,userName,password):
     """
     function that creates a new credentials to user account
     """
-    new_credentials = Credentials(account,username,password)              
+    new_credentials = Credentials(account,userName,password)     
+    return new_credentials
+def save_credentials(credentials):
+       """
+       function that saves credentials to credentials list
+       """ 
+       credentials.save_credentials()
