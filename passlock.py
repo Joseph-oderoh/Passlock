@@ -48,5 +48,27 @@ class Credentials:
     def find_credentials(cls,account):
         found_credentials = Credentials.find_credentials
         """
-        
-        """    
+        test method thsat takes account and returns credentials
+        """  
+        for credentials in cls.credentials_list:
+            if  credentials.account == account:
+                return credentials
+    @classmethod
+    def credentials_exist(cls,account):
+        '''
+        Method that checks if a credentials exists from the credentials list.
+        Args:
+            account: account to search if it exists
+        Returns :
+            Boolean: True or false depending if the credentials exists
+        '''
+        for credentials in cls.credentials_list:
+            if credentials.account == account:
+                    return True
+
+        return False
+    @classmethod
+    def display_credentials(cls):
+        """
+        metho
+        """                
