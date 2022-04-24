@@ -82,7 +82,7 @@ class TestCredentials(unittest.TestCase):
         test create mutiple credentials
         """   
         self.new_credentials.save_credentials()
-        test_credentials = Credentials("Test","user","5jko2k1") #!new creds
+        test_credentials = Credentials("Twitter","JK-~black","5jko2k1") #!new creds
         test_credentials.save_credentials()
         self.assertEqual(len(Credentials.credentials_list),2)
     def test_delete_credentials(self):
@@ -90,7 +90,7 @@ class TestCredentials(unittest.TestCase):
         test_delete_credentials to test if we can remove it
         """    
         self.new_credentials.save_credentials()
-        test_credentials = Credentials("Test","user","5jko2k1")
+        test_credentials = Credentials("Twitter","JK-~black","5jko2k1")
         test_credentials.save_credentials()
 
         self.new_credentials.delete_credentials()#!deleting object
@@ -100,12 +100,12 @@ class TestCredentials(unittest.TestCase):
         test to check if we can find a credential entry by account  credential
         """
         self.new_credentials.save_credentials()
-        test_credentials = Credentials("Twitter","user","5jko2k1") 
+        test_credentials = Credentials("Twitter","JK-~black","5jko2k1") 
         test_credentials.save_credentials()
 
-        found_credentials = Credentials.find_credentials("Twitter")
+        the_credentials = Credentials.find_credentials("Twitter")
 
-        self.assertEqual(found_credentials.account,test_credentials.account)
+        self.assertEqual(the_credentials.account,test_credentials.account)
     def test_credentials_exists(self):
         """
         check test to see if credentials return true
@@ -113,8 +113,9 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.save_credentials()
         test_credentials = Credentials("Twitter","JK-~black","5jko2k1")
         test_credentials.save_credentials()
+        
 
-        credentials_exists = Credentials.credentials_exist("Twitter")
+        credentials_exists = Credentials.if_credentials_exist("Twitter")
         self.assertTrue(credentials_exists)
     def test_display_all_credentials(self):
         """
@@ -128,7 +129,7 @@ class TestCredentials(unittest.TestCase):
         self.new_credentials.save_credentials()
         Credentials.copy_account("Twitter")
 
-        self.assertEqual(self.new_credentials.account,pyperclip.paste())       
+        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)       
 if __name__ == '__main__':
     unittest.main()    
 

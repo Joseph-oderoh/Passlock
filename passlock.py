@@ -43,8 +43,8 @@ class Credentials:
         """    
         Credentials.credentials_list.remove(self)
     @classmethod
-    def find_credentials(cls,account):
-        found_credentials = Credentials.find_credentials
+    def find_credentials(cls, account):
+        # find_credentials = Credentials.find_credentials
         """
         test method thsat takes account and returns credentials
         """  
@@ -65,6 +65,16 @@ class Credentials:
                     return True
 
         return False
+    @classmethod
+    def verify_user(cls,username, password):
+        """
+        method to verify whether the user is in our user_list or not
+        """
+        current_user = ""
+        for user in User.user_list:
+            if(user.username == username and user.password == password):
+                    current_user = user.username
+        return  current_user   
     @classmethod
     def display_credentials(cls):
         """
