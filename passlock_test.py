@@ -1,3 +1,4 @@
+import pyperclip
 import unittest
 from passlock import User #!this isa an import of a class
 from passlock import Credentials #!
@@ -120,7 +121,15 @@ class TestCredentials(unittest.TestCase):
         """
         test to display all the saved credentials
         """ 
-        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list)    
+        self.assertEqual(Credentials.display_credentials(),Credentials.credentials_list) 
+    def test_copy_account(self):
+        """
+        test tocofirm that we arr coping account frome esisting found credentials
+        """
+        self.new_credentials.save_credentials()
+        Credentials.copy_account("Twitter")
+
+        self.assertEqual(self.new_credentials.account,pyperclip.paste())       
 if __name__ == '__main__':
     unittest.main()    
 

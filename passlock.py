@@ -1,8 +1,4 @@
-from pyclbr import Class
-
-from requests import delete
-
-
+import pyperclip
 class User:
     """
     This class generates new instance  of user accounts
