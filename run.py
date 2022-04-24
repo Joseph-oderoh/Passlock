@@ -39,3 +39,22 @@ def save_credentials(credentials):
        function that saves credentials to credentials list
        """ 
        credentials.save_credentials()
+def display_accounts_details():
+    """
+    function that returns saved credentials
+    """
+    return Credentials.display_credentials()
+def delete_credentials(credentials):
+    """
+    function to delete credentials from credentials list
+    """
+    credentials.delete_credentials()
+def find_credentials(account):
+    """
+    function to find credentials by account
+    """
+    return Credentials.find_credentials(account)               
+def check_credentials(account):
+    """
+    function that 
+    """
