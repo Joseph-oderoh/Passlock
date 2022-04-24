@@ -70,5 +70,6 @@ class Credentials:
     @classmethod
     def display_credentials(cls):
         """
-        metho
-        """                
+        method to diplay credentials
+        """ 
+        return cls.credentials_list               
