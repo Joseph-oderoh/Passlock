@@ -28,13 +28,13 @@ def login_user(username,password):
     """
     function to check if a user exists
     """
-    check_user  = Credentials.verify_user(username,password)
-    return check_user
+    check_credentials  = Credentials.verify_user(username,password)
+    return check_credentials
 def create_new_credentials(account,username,password):
     """
     function that creates a new credentials to user account
     """
-    new_credentials = Credentials(username,password)     
+    new_credentials = Credentials(account,username,password)     
     return new_credentials
 
 def save_credentials(credentials):
